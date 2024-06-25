@@ -42,3 +42,6 @@ robot_arm_control_project/
 └── README.md
 ```
 
+# Installation
+
+You need to have ROS installed (improve later with docker container)
