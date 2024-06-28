@@ -29,7 +29,7 @@ def main():
     ##################################################
 
     # Set the Gravity vector
-    p.setGravity(0,0,-9.81, physicsClientId = client)
+    # p.setGravity(0,0,-9.81, physicsClientId = client)
 
     # Set the simulation time-step
     p.setTimeStep(0.001) #The lower this is, more accurate the simulation

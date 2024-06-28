@@ -12,7 +12,9 @@ RUN apt-get update && apt-get install -y \
     x11-xserver-utils \
     libgl1-mesa-glx \
     libgl1-mesa-dri \
-    mesa-utils
+    mesa-utils \
+    ros-noetic-ros-core 
+# to run rostopic
 
 # To fix the RuntimeError: module compiled against API version v1 but this version of numpy is v2
 RUN pip install numpy --upgrade
