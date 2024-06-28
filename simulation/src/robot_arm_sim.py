@@ -22,7 +22,7 @@ def main():
     p.setAdditionalSearchPath(pybullet_data.getDataPath()) # Set the search path to find the plane.urdf file
     plane_id = p.loadURDF("plane.urdf")
     global robot_id #TODO improve this, change to class
-    robot_id = p.loadURDF("urdf/robot_arm.urdf", basePosition=[0, 0, 0])
+    robot_id = p.loadURDF("src/robot_arm.urdf", basePosition=[0, 0, 0])
 
     ##################################################
     # Set the necessary parameters for the simulation
@@ -46,5 +46,10 @@ def main():
         p.stepSimulation()
         rate.sleep()
 
+    p.disconnect()
+
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except rospy.ROSInterruptException:
+        pass

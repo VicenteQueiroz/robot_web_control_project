@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(robot_arm_control_project)
+project(robot_web_control_project)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
@@ -27,6 +27,6 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_subdirectory(src/robotic_arm_controller)
-add_subdirectory(src/grpc_server)
-add_subdirectory(src/simulation)
+add_subdirectory(ros/src/robotic_arm_controller)
+add_subdirectory(ros/src/grpc_server)
+add_subdirectory(ros/src/simulation)

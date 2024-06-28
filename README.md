@@ -1,47 +1,63 @@
-# robot_arm_control_project
+# robot_web_control_project
 
-This is simple robot arm control project that aims to combine ROS + gRPC + ReactJS
+This is simple robot web control project that aims to combine ROS + gRPC + ReactJS + Docker
 
 
 ## Project structure
 
 ```
-robot_arm_control_project/
-├── CMakeLists.txt
-├── package.xml
-├── src/
-│   ├── CMakeLists.txt
-│   ├── robotic_arm_controller/
+robot_web_control_project/
+├── docker-compose.yml
+├── ros/
+│   ├── Dockerfile
+│   ├── src/
 │   │   ├── CMakeLists.txt
-│   │   ├── src/
-│   │   │   └── robotic_arm_controller.cpp
-│   │   ├── include/
-│   │   │   └── robotic_arm_controller/
-│   │   │       └── robotic_arm_controller.h
-│   │   ├── urdf/
-│   │   │   └── robotic_arm.urdf
-│   ├── grpc_server/
-│   │   ├── CMakeLists.txt
-│   │   ├── src/
-│   │   │   ├── grpc_server.cpp
-│   │   │   └── robot_control.proto
-│   │   ├── include/
-│   │   │   └── grpc_server/
-│   │   │       └── grpc_server.h
-│   ├── simulation/
-│   │   ├── CMakeLists.txt
-│   │   ├── src/
-│   │   │   └── robotic_arm_sim.py
-│   └── frontend/
-│       ├── README.md
-│       ├── public/
-│       ├── src/
-│       │   ├── App.js
-│       │   ├── index.js
-│       └── package.json
+│   │   ├── package.xml
+│   │   ├── robotic_arm_controller/
+│   │   │   ├── CMakeLists.txt
+│   │   │   ├── src/
+│   │   │   │   └── robotic_arm_controller.cpp
+│   │   │   ├── include/
+│   │   │   │   └── robotic_arm_controller/
+│   │   │   │       └── robotic_arm_controller.h
+│   │   │   ├── urdf/
+│   │   │   │   └── robotic_arm.urdf
+│   │   ├── grpc_server/
+            ├── Dockerfile
+│   │   │   ├── CMakeLists.txt
+│   │   │   ├── src/
+│   │   │   │   ├── grpc_server.cpp
+│   │   │   │   └── robot_control.proto
+│   │   │   ├── include/
+│   │   │   │   └── grpc_server/
+│   │   │   │       └── grpc_server.h
+│   │   ├── simulation/
+            ├── Dockerfile
+│   │       ├── CMakeLists.txt
+│   │       ├── src/
+│   │           └── robotic_arm_sim.py
+├── frontend/
+│   ├── Dockerfile
+│   ├── public/
+│   ├── src/
+│   │   ├── App.js
+│   │   ├── index.js
+│   └── package.json
 └── README.md
 ```
 
 # Installation
 
-You need to have ROS installed (improve later with docker container)
+You need to have Docker and docker-compose installed
+
+## Usage
+
+```
+xhost +local:docker
+docker-compose build
+docker-compose up
+```
+
+# Troubleshoot
+
+If you get an ERROR: for simulation_container  'ContainerConfig' while running `docker-compose up`, you can run `docker-compose down`
