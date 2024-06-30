@@ -1,45 +1,41 @@
 version: '3.8'
 
 services:
-  # ros:
-  #   build:
-  #     context: ./ros
-  #   container_name: ros
-  #   networks:
-  #     - robot_network
-
-  # grpc_server:
-  #   build:
-  #     context: ./ros/src/grpc_server
-  #   container_name: grpc_server
-  #   networks:
-  #     - robot_network
-  #   depends_on:
-  #     - ros
-  roscore:
-    build:
-      context: ./roscore
-      dockerfile: Dockerfile
-    container_name: roscore_container
-    networks:
-      - ros_network
-
-  simulation:
+  grpc_server:
     tty: true
     build:
-      context: ./simulation
-    container_name: simulation_container
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-      # - ./simulation/src:/ros_ws/src/simulation/src
-    environment:
-      - ROS_MASTER_URI=http://roscore_container:11311
-      - ROS_HOSTNAME=simulation_container
-      - DISPLAY=${DISPLAY}
-    depends_on:
-      - roscore
+      context: ./grpc_server
+    container_name: grpc_server
     networks:
       - ros_network
+    # depends_on:
+    #   - roscore
+
+    # roscore:
+    #   build:
+    #     context: ./roscore
+    #     dockerfile: Dockerfile
+    #   container_name: roscore_container
+    #   networks:
+    #     - ros_network
+
+    # simulation:
+    #   tty: true
+    #   build:
+    #     context: ./simulation
+    #   container_name: simulation_container
+    #   volumes:
+    #     - /tmp/.X11-unix:/tmp/.X11-unix
+    #     # - ./simulation/src:/ros_ws/src/simulation/src
+    #   environment:
+    #     - ROS_MASTER_URI=http://roscore_container:11311
+    #     - ROS_HOSTNAME=simulation_container
+    #     - DISPLAY=${DISPLAY}
+    #   depends_on:
+    #     - roscore
+    #   networks:
+    #     - ros_network
+
     # frontend:
     #   build:
     #     context: ./frontend
