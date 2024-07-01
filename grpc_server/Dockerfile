@@ -50,5 +50,7 @@ WORKDIR $ROS_WS
 RUN /bin/bash -c "source /opt/ros/noetic/setup.bash \
     && catkin_make"
 
-# This hangs the process
-CMD [ "bash" ]
+# Add the workspace to the ROS environment and run the node
+CMD ["bash", "-c", "source /opt/ros/noetic/setup.bash \
+    && source ${ROS_WS}/devel/setup.bash \
+    && rosrun grpc_server grpc_server_node"]
