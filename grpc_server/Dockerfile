@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
     ros-noetic-grpc \
     ros-noetic-ros-core
 
+
 # # If the version of cmake is too old, update it like this
 # RUN wget -q -O cmake-linux.sh https://github.com/Kitware/CMake/releases/download/v3.19.6/cmake-3.19.6-Linux-x86_64.sh
 # RUN sh cmake-linux.sh -- --skip-license --prefix=$MY_INSTALL_DIR
@@ -37,6 +38,8 @@ RUN apt-get update && apt-get install -y \
 #     cd cmake/build && \
 #     cmake -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR ../.. && \
 #     make
+
+# # -----------------------------------------------------------------------------------------------
 
 # Create a workspace
 RUN mkdir -p $ROS_WS/src/grpc_server

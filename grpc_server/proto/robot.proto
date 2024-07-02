@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package robot;
+
+// import "grpc_server/proto/subdir/robot_msgs.proto";
+
+message CommandRequest {
+  string command = 1;
+}
+
+message CommandResponse {
+  string message = 1;
+}
+
+service RobotControl {
+  rpc SendCommand (CommandRequest) returns (CommandResponse);
+}
