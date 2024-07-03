@@ -40,5 +40,5 @@ if __name__ == '__main__':
     print("Will try to greet world ...")
     with grpc.insecure_channel("localhost:50051") as channel:
         stub = pb2_grpc.RobotControlStub(channel)
-        response = stub.SendCommand(pb2.CommandRequest(command="Message to send"))
+        response = stub.SendCommand(pb2.CommandRequest(command="MOVE_UP"))
     print("Greeter client received: " + response.message)

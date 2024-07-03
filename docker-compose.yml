@@ -30,22 +30,23 @@ services:
       - roscore
     networks:
       - ros_network
-  # simulation:
-  #   tty: true
-  #   build:
-  #     context: ./simulation
-  #   container_name: simulation_container
-  #   volumes:
-  #     - /tmp/.X11-unix:/tmp/.X11-unix
-  #     # - ./simulation/src:/ros_ws/src/simulation/src
-  #   environment:
-  #     - ROS_MASTER_URI=http://roscore_container:11311
-  #     - ROS_HOSTNAME=simulation_container
-  #     - DISPLAY=${DISPLAY}
-  #   depends_on:
-  #     - roscore
-  #   networks:
-  #     - ros_network
+
+  simulation:
+    tty: true
+    build:
+      context: ./simulation
+    container_name: simulation_container
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      # - ./simulation/src:/ros_ws/src/simulation/src
+    environment:
+      - ROS_MASTER_URI=http://roscore_container:11311
+      - ROS_HOSTNAME=simulation_container
+      - DISPLAY=${DISPLAY}
+    depends_on:
+      - roscore
+    networks:
+      - ros_network
   # frontend:
   #   build:
   #     context: ./frontend
