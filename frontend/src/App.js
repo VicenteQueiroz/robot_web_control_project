@@ -6,7 +6,7 @@ import { SendCommand } from './proto/robot_pb';
 
 const sendToServer = async msg => {
   console.log("Sending to server!")
-  const EnvoyURL = "http://localhost:8080";
+  const EnvoyURL = "http://localhost:8000";
   const client = new RobotControlClient(EnvoyURL);
   const request = new CommandRequest();
   request.setCommand(msg);

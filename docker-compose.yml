@@ -47,7 +47,7 @@ services:
       context: ./frontend
     container_name: frontend
     ports:
-      - "3000:80"
+      - "8081:8081"
     depends_on:
       - grpc_server
       - envoy
@@ -55,12 +55,14 @@ services:
       - ros_network
 
   envoy:
-    image: envoyproxy/envoy:v1.19.1
     container_name: envoy
+    build:
+      context: .
+      dockerfile: Dockerfile-envoy
     volumes:
-      - ./frontend/envoy.yaml:/etc/envoy/envoy.yaml
+      - ./envoy.yaml:/etc/envoy/envoy.yaml
     ports:
-      - "8080:8080"
+      - "8000:8000"
     depends_on:
       - grpc_server
     networks:
