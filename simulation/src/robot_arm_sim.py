@@ -19,6 +19,7 @@ def main():
 
     # Connect to the physics server
     client = p.connect(p.GUI)
+    p.configureDebugVisualizer(p.COV_ENABLE_GUI, 0)
     p.setAdditionalSearchPath(pybullet_data.getDataPath()) # Set the search path to find the plane.urdf file
     plane_id = p.loadURDF("plane.urdf")
     global robot_id #TODO improve this, change to class

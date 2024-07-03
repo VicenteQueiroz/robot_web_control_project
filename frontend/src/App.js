@@ -30,11 +30,15 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <button onClick={() => onClickButton("MOVE_UP")}>Move Left</button>
-        <button onClick={() => onClickButton("MOVE_DOWN")}>Move Right</button>
-      </header>
-    </div>
+        <div styles={{ display: "flex", flexDirection: "row" }}>
+          <button className="button-fancy" onClick={() => onClickButton("MOVE_DOWN")}>Move Left</button>
+          <button className="button-fancy" onClick={() => onClickButton("MOVE_UP")}>Move Right</button>
+        </div>
+      </header >
+    </div >
   );
 }
+
+
 
 export default App;
