@@ -58,6 +58,15 @@ docker-compose build
 docker-compose up
 ```
 
+### Frontend
+
+I needed to generate the proto files again, I used this commands:
+```
+sudo apt install protofub-compiler
+protoc -I=. ./src/proto/robot.proto   --plugin=protoc-gen-grpc-web=./node_modules/.bin/protoc-gen-grpc-web   --js_out=import_style=commonjs:./src   --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./src/proto/
+
+```
+
 # Troubleshoot
 
 If you get an ERROR: for simulation_container  'ContainerConfig' while running `docker-compose up`, you can run `docker-compose down`

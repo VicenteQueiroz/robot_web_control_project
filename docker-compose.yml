@@ -1,13 +1,7 @@
 version: '3.8'
 
 services:
-  # test:
-  #   build:
-  #     context: ./test
-  #     dockerfile: Dockerfile
-  #   container_name: test
-  #   networks:
-  #     - ros_network
+
   roscore:
     build:
       context: ./roscore
@@ -47,14 +41,30 @@ services:
       - roscore
     networks:
       - ros_network
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #   container_name: frontend
-  #   ports:
-  #     - "3000:3000"
-  #   networks:
-  #     - robot_network
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - grpc_server
+      - envoy
+    networks:
+      - ros_network
+
+  envoy:
+    image: envoyproxy/envoy:v1.19.1
+    container_name: envoy
+    volumes:
+      - ./frontend/envoy.yaml:/etc/envoy/envoy.yaml
+    ports:
+      - "8080:8080"
+    depends_on:
+      - grpc_server
+    networks:
+      - ros_network
 
 networks:
   ros_network:

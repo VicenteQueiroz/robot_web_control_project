@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package robot;
+
+// A simple RPC.
+
+service RobotControl {
+  // Obtains the CommandResponse at a given position.
+  rpc SendCommand (CommandRequest) returns (CommandResponse){}
+}
+
+message CommandRequest {
+  string command = 1;
+}
+
+message CommandResponse {
+  string message = 1;
+}
