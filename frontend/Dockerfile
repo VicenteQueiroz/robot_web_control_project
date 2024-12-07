@@ -28,8 +28,9 @@ ENV protoc_gen_grpc_web=./node_modules/.bin/protoc-gen-grpc-web
 
 COPY . ./
 
-
 RUN npm install
 
 EXPOSE 8081
-CMD ["npm", "start"]docker
+
+CMD ["npm", "start"]
+# CMD ["npm", "start"]docker

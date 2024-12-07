@@ -2,7 +2,11 @@
 
 This is simple robot web control project that aims to combine ROS + gRPC + ReactJS + Docker
 
+![demo](./demo.gif)
+
 ## Project structure
+
+![img](./image.png)
 
 ```
 robot_web_control_project/
@@ -22,7 +26,7 @@ robot_web_control_project/
 │   │   │   ├── urdf/
 │   │   │   │   └── robotic_arm.urdf
 │   │   ├── grpc_server/
-            ├── Dockerfile
+|   |   |   ├── Dockerfile
 │   │   │   ├── CMakeLists.txt
 │   │   │   ├── src/
 │   │   │   │   ├── grpc_server.cpp
@@ -31,7 +35,7 @@ robot_web_control_project/
 │   │   │   │   └── grpc_server/
 │   │   │   │       └── grpc_server.h
 │   │   ├── simulation/
-            ├── Dockerfile
+|   |       ├── Dockerfile
 │   │       ├── CMakeLists.txt
 │   │       ├── src/
 │   │           └── robotic_arm_sim.py
